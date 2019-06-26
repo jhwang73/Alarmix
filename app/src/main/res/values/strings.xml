@@ -6,4 +6,6 @@
     <string name="title_account">Accounts</string>
     <string name="title_more_menu">More</string>
 
+    <string name="button_add_alarm">Add Alarm</string>
+
 </resources>
