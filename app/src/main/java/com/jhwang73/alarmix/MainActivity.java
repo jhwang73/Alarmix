@@ -13,9 +13,9 @@ public class MainActivity extends AppCompatActivity {
 
     private BottomNavigationView bottomNavView;
 
-    private Fragment fragmentAlarmManager;
-    private Fragment fragmentPlaylistManager;
-    private Fragment fragmentAccountManager;
+    private Fragment fragmentAlarmsDashboard;
+    private Fragment fragmentPlaylistsDashboard;
+    private Fragment fragmentAccountsDashboard;
     private Fragment fragmentMoreMenu;
 
     @Override
@@ -46,11 +46,11 @@ public class MainActivity extends AppCompatActivity {
             private Fragment getSelectedFragmentById(int itemId) {
                 switch (itemId) {
                     case R.id.nav_alarm:
-                        return fragmentAlarmManager;
+                        return fragmentAlarmsDashboard;
                     case R.id.nav_playlist:
-                        return fragmentPlaylistManager;
+                        return fragmentPlaylistsDashboard;
                     case R.id.nav_account:
-                        return fragmentAccountManager;
+                        return fragmentAccountsDashboard;
                     case R.id.nav_more_menu:
                         return fragmentMoreMenu;
                     default:
@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void displayHomeFragment() {
-        displayNewFragment(fragmentAlarmManager);
+        displayNewFragment(fragmentAlarmsDashboard);
     }
 
     private void displayNewFragment(Fragment newFragment) {
