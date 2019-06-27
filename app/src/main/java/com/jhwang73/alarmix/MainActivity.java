@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.jhwang73.alarmix.fragments.concreteFragments.AlarmsDashboardFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,10 +26,11 @@ public class MainActivity extends AppCompatActivity {
 
         initializeFragments();
         initializeBottomNavigationView();
-//        displayHomeFragment();
+        displayHomeFragment();
     }
 
     private void initializeFragments() {
+        fragmentAlarmsDashboard = new AlarmsDashboardFragment();
     }
 
     private void initializeBottomNavigationView() {
