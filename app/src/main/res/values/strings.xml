@@ -7,5 +7,7 @@
     <string name="title_more_menu">More</string>
 
     <string name="button_add_alarm">Add Alarm</string>
+    <string name="button_set_alarm">OK</string>
+    <string name="button_cancel_alarm">Cancel</string>
 
 </resources>

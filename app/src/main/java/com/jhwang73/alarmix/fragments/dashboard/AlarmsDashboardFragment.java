@@ -13,6 +13,8 @@ import com.jhwang73.alarmix.R;
 import com.jhwang73.alarmix.dashboard.Dashboard;
 import com.jhwang73.alarmix.dashboard.alarm.AlarmDashboard;
 import com.jhwang73.alarmix.editables.alarm.Alarm;
+import com.jhwang73.alarmix.editor.alarm.AlarmEditorFragmentFactory;
+import com.jhwang73.alarmix.fragments.editor.AlarmEditorFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,12 +24,12 @@ import androidx.annotation.Nullable;
 
 public class AlarmsDashboardFragment extends DashboardFragment<Alarm> {
 
-    public AlarmsDashboardFragment() {
-        super(new AlarmDashboard());
-    }
+    private ListView alarmListView;
+    private Button addAlarmButton;
 
-    ListView alarmListView;
-    Button addAlarmButton;
+    public AlarmsDashboardFragment() {
+        super(new AlarmDashboard(), AlarmEditorFragmentFactory.getInstance());
+    }
     
     @Nullable
     @Override
@@ -44,12 +46,19 @@ public class AlarmsDashboardFragment extends DashboardFragment<Alarm> {
     @Override
     protected void initializeListeners(View view) {
         List<Alarm> alarms = getDashboard().getItems();
-        ArrayAdapter<Alarm> alarmListAdapter = new ArrayAdapter<>(getActivity().getApplicationContext(), android.R.layout.simple_spinner_item, alarms);
+        final ArrayAdapter<Alarm> alarmListAdapter = new ArrayAdapter<>(getActivity().getApplicationContext(), android.R.layout.simple_spinner_item, alarms);
         alarmListView.setAdapter(alarmListAdapter);
         alarmListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                getDashboard().getItems().add(new Alarm());
+
+            }
+        });
+
+        addAlarmButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openNewEditorFragment();
             }
         });
     }
