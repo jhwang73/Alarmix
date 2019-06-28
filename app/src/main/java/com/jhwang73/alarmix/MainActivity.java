@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.jhwang73.alarmix.fragments.concreteFragments.AlarmsDashboardFragment;
+import com.jhwang73.alarmix.fragments.dashboard.AlarmsDashboardFragment;
 
 public class MainActivity extends AppCompatActivity {
 

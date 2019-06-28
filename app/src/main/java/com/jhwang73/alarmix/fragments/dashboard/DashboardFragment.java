@@ -1,4 +1,4 @@
-package com.jhwang73.alarmix.fragments.dashboardFragment;
+package com.jhwang73.alarmix.fragments.dashboard;
 
 import com.jhwang73.alarmix.fragments.SetupFragment;
 
