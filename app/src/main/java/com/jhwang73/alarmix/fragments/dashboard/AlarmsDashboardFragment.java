@@ -24,9 +24,6 @@ import androidx.annotation.Nullable;
 
 public class AlarmsDashboardFragment extends DashboardFragment<Alarm> {
 
-    private ListView alarmListView;
-    private Button addAlarmButton;
-
     public AlarmsDashboardFragment() {
         super(new AlarmDashboard(), AlarmEditorFragmentFactory.getInstance());
     }
@@ -38,28 +35,17 @@ public class AlarmsDashboardFragment extends DashboardFragment<Alarm> {
     }
 
     @Override
-    protected void initializeComponents(View view) {
-        alarmListView = view.findViewById(R.id.alarmList);
-        addAlarmButton = view.findViewById(R.id.addAlarmButton);
+    protected int getListViewID() {
+        return R.id.alarmList;
     }
 
     @Override
-    protected void initializeListeners(View view) {
-        List<Alarm> alarms = getDashboard().getItems();
-        final ArrayAdapter<Alarm> alarmListAdapter = new ArrayAdapter<>(getActivity().getApplicationContext(), android.R.layout.simple_spinner_item, alarms);
-        alarmListView.setAdapter(alarmListAdapter);
-        alarmListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+    protected int getAddItemButtonID() {
+        return R.id.addAlarmButton;
+    }
 
-            }
-        });
-
-        addAlarmButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openNewEditorFragment();
-            }
-        });
+    @Override
+    protected int getListViewResource() {
+        return android.R.layout.simple_spinner_item;
     }
 }
