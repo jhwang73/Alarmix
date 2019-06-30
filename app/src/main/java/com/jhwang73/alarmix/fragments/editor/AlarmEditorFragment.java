@@ -6,25 +6,25 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.jhwang73.alarmix.R;
+import com.jhwang73.alarmix.editables.alarm.Alarm;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-public class AlarmEditorFragment extends EditorFragment {
+public class AlarmEditorFragment extends EditorFragment<Alarm> {
 
-    @Nullable
     @Override
-    protected View inflateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_alarm_editor, container, false);
+    protected int getFragmentID() {
+        return R.layout.fragment_alarm_editor;
     }
 
     @Override
-    protected void initializeComponents(View view) {
-
+    protected int getOkButtonID() {
+        return R.id.setAlarm;
     }
 
     @Override
-    protected void initializeListeners(View view) {
-
+    protected int getCancelButtonID() {
+        return R.id.cancelAlarm;
     }
 }

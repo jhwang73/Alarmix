@@ -27,11 +27,10 @@ public class AlarmsDashboardFragment extends DashboardFragment<Alarm> {
     public AlarmsDashboardFragment() {
         super(new AlarmDashboard(), AlarmEditorFragmentFactory.getInstance());
     }
-    
-    @Nullable
+
     @Override
-    protected View inflateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_alarm_manager, container, false);
+    protected int getFragmentID() {
+        return R.layout.fragment_alarm_manager;
     }
 
     @Override
@@ -41,11 +40,12 @@ public class AlarmsDashboardFragment extends DashboardFragment<Alarm> {
 
     @Override
     protected int getAddItemButtonID() {
-        return R.id.addAlarmButton;
+        return R.id.newAlarmButton;
     }
 
     @Override
     protected int getListViewResource() {
         return android.R.layout.simple_spinner_item;
     }
+
 }

@@ -7,10 +7,10 @@
         android:id="@+id/alarmList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/addAlarmButton" />
+        android:layout_below="@+id/newAlarmButton" />
 
     <Button
-        android:id="@+id/addAlarmButton"
+        android:id="@+id/newAlarmButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"

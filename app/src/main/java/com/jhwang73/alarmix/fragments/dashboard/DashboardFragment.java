@@ -52,9 +52,9 @@ abstract class DashboardFragment<EditableItem extends Editable> extends SetupFra
     protected void initializeListeners(View view) {
         List<EditableItem> items = getDashboard().getItems();
 
-        int resource = getListViewResource();
+        int listViewResource = getListViewResource();
 
-        final ArrayAdapter<EditableItem> alarmListAdapter = new ArrayAdapter<>(getActivity().getApplicationContext(), android.R.layout.simple_spinner_item, items);
+        final ArrayAdapter<EditableItem> alarmListAdapter = new ArrayAdapter<>(getActivity().getApplicationContext(), listViewResource, items);
         listView.setAdapter(alarmListAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
