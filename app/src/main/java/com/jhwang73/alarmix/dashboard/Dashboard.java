@@ -16,4 +16,8 @@ public abstract class Dashboard<EditableItem extends Editable> {
         return items;
     }
 
+    public void addItem(EditableItem item) {
+        items.add(item);
+    }
+
 }

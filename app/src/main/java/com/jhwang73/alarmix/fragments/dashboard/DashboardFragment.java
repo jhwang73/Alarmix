@@ -15,7 +15,7 @@ import com.jhwang73.alarmix.fragments.editor.EditorFragment;
 
 import java.util.List;
 
-abstract class DashboardFragment<EditableItem extends Editable> extends SetupFragment {
+public abstract class DashboardFragment<EditableItem extends Editable> extends SetupFragment {
 
     /**
      * The backend components common to all DashboardFragments
@@ -74,9 +74,8 @@ abstract class DashboardFragment<EditableItem extends Editable> extends SetupFra
     protected abstract int getListViewResource();
 
     private void openNewEditorFragment() {
-        editorFragmentFactory.make();
 
-        EditorFragment<EditableItem> editorFragment = editorFragmentFactory.make();
+        EditorFragment<EditableItem> editorFragment = editorFragmentFactory.make(dashboard);
 
         getActivity().getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment_container, editorFragment, "openNewEditorFragment")

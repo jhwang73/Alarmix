@@ -3,16 +3,23 @@ package com.jhwang73.alarmix.fragments.editor;
 import android.view.View;
 import android.widget.Button;
 
+import com.jhwang73.alarmix.dashboard.Dashboard;
 import com.jhwang73.alarmix.editables.Editable;
 import com.jhwang73.alarmix.fragments.SetupFragment;
 
 public abstract class EditorFragment<EditableItem extends Editable> extends SetupFragment {
 
-    Button okButton;
-    Button cancelButton;
+    private Dashboard<EditableItem> dashboard;
+
+    private Button okButton;
+    private Button cancelButton;
+
+    public void setDashboard(Dashboard<EditableItem> dashboard) {
+        this.dashboard = dashboard;
+    }
 
     @Override
-    protected void initializeComponents(View view) {
+    protected final void initializeComponents(View view) {
         okButton = view.findViewById(getOkButtonID());
         cancelButton = view.findViewById(getCancelButtonID());
     }
@@ -22,7 +29,14 @@ public abstract class EditorFragment<EditableItem extends Editable> extends Setu
     protected abstract int getCancelButtonID();
 
     @Override
-    protected void initializeListeners(View view) {
+    protected final void initializeListeners(View view) {
+        okButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dashboard.addItem(makeNewItemWithCurrentSettings());
+                getActivity().onBackPressed();
+            }
+        });
 
         cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -31,5 +45,7 @@ public abstract class EditorFragment<EditableItem extends Editable> extends Setu
             }
         });
     }
+
+    protected abstract EditableItem makeNewItemWithCurrentSettings();
 
 }

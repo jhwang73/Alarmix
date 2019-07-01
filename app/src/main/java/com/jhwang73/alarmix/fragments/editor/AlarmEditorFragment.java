@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.jhwang73.alarmix.R;
+import com.jhwang73.alarmix.dashboard.Dashboard;
 import com.jhwang73.alarmix.editables.alarm.Alarm;
 
 import androidx.annotation.NonNull;
@@ -26,5 +27,10 @@ public class AlarmEditorFragment extends EditorFragment<Alarm> {
     @Override
     protected int getCancelButtonID() {
         return R.id.cancelAlarm;
+    }
+
+    @Override
+    protected Alarm makeNewItemWithCurrentSettings() {
+        return new Alarm();
     }
 }

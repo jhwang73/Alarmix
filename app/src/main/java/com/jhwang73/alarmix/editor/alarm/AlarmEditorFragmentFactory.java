@@ -1,5 +1,6 @@
 package com.jhwang73.alarmix.editor.alarm;
 
+import com.jhwang73.alarmix.dashboard.Dashboard;
 import com.jhwang73.alarmix.editables.alarm.Alarm;
 import com.jhwang73.alarmix.editor.EditorFragmentFactory;
 import com.jhwang73.alarmix.fragments.editor.AlarmEditorFragment;
@@ -15,8 +16,7 @@ public class AlarmEditorFragmentFactory extends EditorFragmentFactory<Alarm> {
         return alarmEditorFragmentFactory;
     }
 
-    @Override
-    public EditorFragment<Alarm> make() {
+    public EditorFragment<Alarm> makeEditorFragment() {
         return new AlarmEditorFragment();
     }
 }
