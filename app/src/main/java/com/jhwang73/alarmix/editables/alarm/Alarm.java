@@ -6,15 +6,20 @@ import androidx.annotation.NonNull;
 
 public class Alarm implements Editable {
 
+    private int hour;
+    private int minute;
+
     private boolean isOn;
 
-    public Alarm() {
+    public Alarm(int hour, int minute) {
         isOn = true;
+        this.hour = hour;
+        this.minute = minute;
     }
 
     @NonNull
     @Override
     public String toString() {
-        return Boolean.toString(isOn);
+        return hour + ":" + minute + " - " + Boolean.toString(isOn);
     }
 }

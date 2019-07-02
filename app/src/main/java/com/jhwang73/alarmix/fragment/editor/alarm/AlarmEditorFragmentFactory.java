@@ -1,10 +1,8 @@
-package com.jhwang73.alarmix.editor.alarm;
+package com.jhwang73.alarmix.fragment.editor.alarm;
 
-import com.jhwang73.alarmix.dashboard.Dashboard;
 import com.jhwang73.alarmix.editables.alarm.Alarm;
-import com.jhwang73.alarmix.editor.EditorFragmentFactory;
-import com.jhwang73.alarmix.fragments.editor.AlarmEditorFragment;
-import com.jhwang73.alarmix.fragments.editor.EditorFragment;
+import com.jhwang73.alarmix.fragment.editor.EditorFragmentFactory;
+import com.jhwang73.alarmix.fragment.editor.EditorFragment;
 
 public class AlarmEditorFragmentFactory extends EditorFragmentFactory<Alarm> {
 

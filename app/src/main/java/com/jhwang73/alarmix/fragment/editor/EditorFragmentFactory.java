@@ -1,14 +1,15 @@
-package com.jhwang73.alarmix.editor;
+package com.jhwang73.alarmix.fragment.editor;
 
 import com.jhwang73.alarmix.dashboard.Dashboard;
 import com.jhwang73.alarmix.editables.Editable;
-import com.jhwang73.alarmix.fragments.editor.EditorFragment;
 
 public abstract class EditorFragmentFactory<EditableItem extends Editable> {
 
-    public EditorFragment<EditableItem> make(Dashboard<EditableItem> dashboard) {
+    public EditorFragment<EditableItem> make(Dashboard<EditableItem> dashboard, EditableItem editableItem) {
         EditorFragment<EditableItem> editorFragment = makeEditorFragment();
-        editorFragment.setDashboard(dashboard);
+        editorFragment.configureDashboard(dashboard);
+        editorFragment.configureEditableItem(editableItem);
+        editorFragment.updateView();
         return editorFragment;
     }
 
