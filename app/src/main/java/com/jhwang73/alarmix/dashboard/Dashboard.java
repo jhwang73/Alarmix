@@ -6,7 +6,7 @@ import java.util.List;
 
 public abstract class Dashboard<EditableItem extends Editable> {
 
-    List<EditableItem> items;
+    private List<EditableItem> items;
 
     public Dashboard(List<EditableItem> items) {
         this.items = items;

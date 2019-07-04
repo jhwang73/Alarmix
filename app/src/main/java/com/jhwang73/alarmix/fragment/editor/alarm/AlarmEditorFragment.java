@@ -5,7 +5,9 @@ import android.view.View;
 import android.widget.TimePicker;
 
 import com.jhwang73.alarmix.R;
+import com.jhwang73.alarmix.editables.ItemSettings;
 import com.jhwang73.alarmix.editables.alarm.Alarm;
+import com.jhwang73.alarmix.editables.alarm.AlarmSettings;
 import com.jhwang73.alarmix.fragment.editor.EditorFragment;
 
 public class AlarmEditorFragment extends EditorFragment<Alarm> {
@@ -38,10 +40,12 @@ public class AlarmEditorFragment extends EditorFragment<Alarm> {
     }
 
     @Override
-    protected Alarm makeNewItemWithCurrentSettings() {
+    protected ItemSettings getCurrentSettings() {
         int hour = safeGetHour();
         int minute = safeGetMinute();
-        return new Alarm(hour, minute);
+        Alarm temp = new Alarm(hour, minute);
+
+        return new AlarmSettings();
     }
 
     private int safeGetHour() {

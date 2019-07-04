@@ -10,6 +10,8 @@ import android.widget.ListView;
 import com.jhwang73.alarmix.R;
 import com.jhwang73.alarmix.dashboard.Dashboard;
 import com.jhwang73.alarmix.editables.Editable;
+import com.jhwang73.alarmix.editables.ItemSettings;
+import com.jhwang73.alarmix.editor.Editor;
 import com.jhwang73.alarmix.fragment.editor.EditorFragmentFactory;
 import com.jhwang73.alarmix.fragment.SetupFragment;
 import com.jhwang73.alarmix.fragment.editor.EditorFragment;
@@ -60,7 +62,10 @@ public abstract class DashboardFragment<EditableItem extends Editable> extends S
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
                 EditableItem editableItem = listViewAdapter.getItem(position);
+                ItemSettings<EditableItem> itemSettings = null;
+
                 openEditorFragment(editableItem);
             }
         });
@@ -69,7 +74,10 @@ public abstract class DashboardFragment<EditableItem extends Editable> extends S
             @Override
             public void onClick(View v) {
                 //TODO
-                EditableItem newItem = null;
+
+                EditableItem editableItem = null;
+                ItemSettings<EditableItem> defaultSettings = null;
+
                 openEditorFragment(newItem);
             }
         });
@@ -77,14 +85,16 @@ public abstract class DashboardFragment<EditableItem extends Editable> extends S
 
     protected abstract int getListViewResource();
 
-    private void openEditorFragment(EditableItem editableItem) {
+    private void openEditorFragment(ItemSettings<EditableItem> itemSettings) {
 
-        EditorFragment<EditableItem> editorFragment = editorFragmentFactory.make(dashboard, editableItem);
+        EditorFragment<EditableItem> editorFragment = editorFragmentFactory.make(dashboard, getEditor());
 
         getActivity().getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment_container, editorFragment, "openNewEditorFragment")
                 .addToBackStack(null)
                 .commit();
     }
+
+    protected abstract Editor<EditableItem> getEditor();
 
 }
