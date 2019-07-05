@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 int itemId = menuItem.getItemId();
                 Fragment selectedFragment = getSelectedFragmentById(itemId);
-                displayNewFragment(selectedFragment);
+                displayFragment(selectedFragment);
                 return true;
             }
 
@@ -64,10 +64,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void displayHomeFragment() {
-        displayNewFragment(fragmentAlarmsDashboard);
+        displayFragment(fragmentAlarmsDashboard);
     }
 
-    private void displayNewFragment(Fragment newFragment) {
+    private void displayFragment(Fragment newFragment) {
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment_container, newFragment).commit();
     }

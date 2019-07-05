@@ -1,10 +1,11 @@
 package com.jhwang73.alarmix.editables.alarm;
 
 import com.jhwang73.alarmix.editables.Editable;
+import com.jhwang73.alarmix.editables.ItemSettings;
 
 import androidx.annotation.NonNull;
 
-public class Alarm implements Editable {
+public class Alarm implements Editable<Alarm> {
 
     private int hour;
     private int minute;
@@ -21,5 +22,10 @@ public class Alarm implements Editable {
     @Override
     public String toString() {
         return hour + ":" + minute + " - " + Boolean.toString(isOn);
+    }
+
+    @Override
+    public ItemSettings<Alarm> getSettings() {
+        return null;
     }
 }

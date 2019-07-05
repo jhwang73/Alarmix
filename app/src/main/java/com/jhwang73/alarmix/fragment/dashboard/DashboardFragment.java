@@ -20,15 +20,9 @@ import java.util.List;
 
 public abstract class DashboardFragment<EditableItem extends Editable> extends SetupFragment {
 
-    /**
-     * The backend components common to all DashboardFragments
-     */
     private Dashboard<EditableItem> dashboard;
     private EditorFragmentFactory<EditableItem> editorFragmentFactory;
 
-    /**
-     * The UI components common to all DashboardFragments
-     */
     private ListView listView;
     private Button addItemButton;
 
@@ -64,9 +58,9 @@ public abstract class DashboardFragment<EditableItem extends Editable> extends S
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 EditableItem editableItem = listViewAdapter.getItem(position);
-                ItemSettings<EditableItem> itemSettings = null;
+                ItemSettings<EditableItem> itemSettings = editableItem.getSettings();
 
-                openEditorFragment(editableItem);
+                openEditorFragment(itemSettings);
             }
         });
 
@@ -78,7 +72,7 @@ public abstract class DashboardFragment<EditableItem extends Editable> extends S
                 EditableItem editableItem = null;
                 ItemSettings<EditableItem> defaultSettings = null;
 
-                openEditorFragment(newItem);
+                openEditorFragment(defaultSettings);
             }
         });
     }
