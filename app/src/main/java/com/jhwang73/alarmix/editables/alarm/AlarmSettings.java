@@ -4,6 +4,8 @@ import com.jhwang73.alarmix.editables.ItemSettings;
 
 public class AlarmSettings extends ItemSettings {
 
+    public static AlarmSettings DEFAULT_SETTINGS = new AlarmSettings(7, 0);
+
     private int hour;
     private int minute;
 

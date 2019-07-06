@@ -38,6 +38,7 @@ public abstract class EditorFragment<EditableItem extends Editable> extends Setu
                 ItemSettings itemSettings = getCurrentSettings();
                 EditableItem editableItem = editor.make(itemSettings);
                 dashboard.addItem(editableItem);
+                dashboard.sortList();
                 getActivity().onBackPressed();
             }
         });
@@ -50,7 +51,7 @@ public abstract class EditorFragment<EditableItem extends Editable> extends Setu
         });
     }
 
-    public abstract void updateView();
+    public abstract void loadSettings(ItemSettings itemSettings);
 
     protected abstract ItemSettings getCurrentSettings();
 

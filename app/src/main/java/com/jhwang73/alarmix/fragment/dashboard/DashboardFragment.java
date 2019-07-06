@@ -30,7 +30,6 @@ public abstract class DashboardFragment<EditableItem extends Editable> extends S
 
         //dashboard
         //editorfragmentfactory
-        //editor
 
         this.dashboard = dashboard;
         this.editorFragmentFactory = editorFragmentFactory;
@@ -80,10 +79,8 @@ public abstract class DashboardFragment<EditableItem extends Editable> extends S
         addItemButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO
 
-                EditableItem editableItem = null;
-                ItemSettings defaultSettings = null;
+                ItemSettings defaultSettings = dashboard.getDefaultSettings();
 
                 openEditorFragment(defaultSettings);
             }
@@ -93,6 +90,8 @@ public abstract class DashboardFragment<EditableItem extends Editable> extends S
     private void openEditorFragment(ItemSettings itemSettings) {
 
         EditorFragment<EditableItem> editorFragment = editorFragmentFactory.make(dashboard);
+        //Bundle?
+        editorFragment.loadSettings(itemSettings);
 
         getActivity().getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment_container, editorFragment, "openNewEditorFragment")

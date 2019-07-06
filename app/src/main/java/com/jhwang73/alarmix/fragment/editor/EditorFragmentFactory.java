@@ -2,7 +2,7 @@ package com.jhwang73.alarmix.fragment.editor;
 
 import com.jhwang73.alarmix.dashboard.Dashboard;
 import com.jhwang73.alarmix.editables.Editable;
-import com.jhwang73.alarmix.editor.Editor;
+import com.jhwang73.alarmix.editables.ItemSettings;
 
 public abstract class EditorFragmentFactory<EditableItem extends Editable> {
 
@@ -10,7 +10,6 @@ public abstract class EditorFragmentFactory<EditableItem extends Editable> {
         EditorFragment<EditableItem> editorFragment = makeEditorFragment();
         //TODO
         //bundle
-        editorFragment.updateView();
         return editorFragment;
     }
 

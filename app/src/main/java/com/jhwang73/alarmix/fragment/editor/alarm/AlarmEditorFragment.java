@@ -35,7 +35,7 @@ public class AlarmEditorFragment extends EditorFragment<Alarm> {
     }
 
     @Override
-    public void updateView() {
+    public void loadSettings(ItemSettings itemSettings) {
 
     }
 
