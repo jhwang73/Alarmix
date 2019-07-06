@@ -1,7 +1,7 @@
 package com.jhwang73.alarmix.editables;
 
-public interface Editable<EditableItem extends Editable> {
+public interface Editable {
 
-    public abstract ItemSettings<EditableItem> getItemSettings();
+    public ItemSettings getItemSettings();
 
 }

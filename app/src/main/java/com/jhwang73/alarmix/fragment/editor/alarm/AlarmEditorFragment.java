@@ -43,9 +43,8 @@ public class AlarmEditorFragment extends EditorFragment<Alarm> {
     protected ItemSettings getCurrentSettings() {
         int hour = safeGetHour();
         int minute = safeGetMinute();
-        Alarm temp = new Alarm(hour, minute);
 
-        return new AlarmSettings();
+        return new AlarmSettings(hour, minute);
     }
 
     private int safeGetHour() {

@@ -33,10 +33,4 @@ public class AlarmsDashboardFragment extends DashboardFragment<Alarm> {
         return android.R.layout.simple_spinner_item;
     }
 
-    @Override
-    protected Editor<Alarm> getEditor() {
-        // TODO singleton, then configure the item onto it
-        return new AlarmEditor();
-    }
-
 }

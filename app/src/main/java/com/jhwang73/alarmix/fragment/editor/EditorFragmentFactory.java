@@ -6,10 +6,10 @@ import com.jhwang73.alarmix.editor.Editor;
 
 public abstract class EditorFragmentFactory<EditableItem extends Editable> {
 
-    public EditorFragment<EditableItem> make(Dashboard<EditableItem> dashboard, Editor<EditableItem> editor) {
+    public EditorFragment<EditableItem> make(Dashboard<EditableItem> dashboard) {
         EditorFragment<EditableItem> editorFragment = makeEditorFragment();
-        editorFragment.configureDashboard(dashboard);
-        editorFragment.configureEditor(editor);
+        //TODO
+        //bundle
         editorFragment.updateView();
         return editorFragment;
     }

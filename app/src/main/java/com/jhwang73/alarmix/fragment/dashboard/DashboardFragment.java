@@ -27,6 +27,11 @@ public abstract class DashboardFragment<EditableItem extends Editable> extends S
     private Button addItemButton;
 
     public DashboardFragment(Dashboard<EditableItem> dashboard, EditorFragmentFactory<EditableItem> editorFragmentFactory) {
+
+        //dashboard
+        //editorfragmentfactory
+        //editor
+
         this.dashboard = dashboard;
         this.editorFragmentFactory = editorFragmentFactory;
     }
@@ -47,48 +52,52 @@ public abstract class DashboardFragment<EditableItem extends Editable> extends S
 
     @Override
     protected void initializeListeners(View view) {
+        initializeListViewListener(view);
+        initializeAddItemButtonListener(view);
+    }
+
+    private void initializeListViewListener(View view) {
         List<EditableItem> items = getDashboard().getItems();
-
         int listViewResource = getListViewResource();
-
         final ArrayAdapter<EditableItem> listViewAdapter = new ArrayAdapter<>(getActivity().getApplicationContext(), listViewResource, items);
         listView.setAdapter(listViewAdapter);
+
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 EditableItem editableItem = listViewAdapter.getItem(position);
-                ItemSettings<EditableItem> itemSettings = editableItem.getSettings();
+                ItemSettings itemSettings = editableItem.getItemSettings();
 
                 openEditorFragment(itemSettings);
-            }
-        });
-
-        addItemButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //TODO
-
-                EditableItem editableItem = null;
-                ItemSettings<EditableItem> defaultSettings = null;
-
-                openEditorFragment(defaultSettings);
             }
         });
     }
 
     protected abstract int getListViewResource();
 
-    private void openEditorFragment(ItemSettings<EditableItem> itemSettings) {
+    private void initializeAddItemButtonListener(View view) {
+        addItemButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //TODO
 
-        EditorFragment<EditableItem> editorFragment = editorFragmentFactory.make(dashboard, getEditor());
+                EditableItem editableItem = null;
+                ItemSettings defaultSettings = null;
+
+                openEditorFragment(defaultSettings);
+            }
+        });
+    }
+
+    private void openEditorFragment(ItemSettings itemSettings) {
+
+        EditorFragment<EditableItem> editorFragment = editorFragmentFactory.make(dashboard);
 
         getActivity().getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment_container, editorFragment, "openNewEditorFragment")
                 .addToBackStack(null)
                 .commit();
     }
-
-    protected abstract Editor<EditableItem> getEditor();
 
 }

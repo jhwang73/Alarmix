@@ -5,7 +5,7 @@ import com.jhwang73.alarmix.editables.ItemSettings;
 
 import androidx.annotation.NonNull;
 
-public class Alarm implements Editable<Alarm> {
+public class Alarm implements Editable {
 
     private AlarmSettings alarmSettings;
 
@@ -31,7 +31,7 @@ public class Alarm implements Editable<Alarm> {
     }
 
     @Override
-    public ItemSettings<Alarm> getItemSettings() {
+    public ItemSettings getItemSettings() {
         return alarmSettings;
     }
 }

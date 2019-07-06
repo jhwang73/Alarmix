@@ -35,7 +35,7 @@ public abstract class EditorFragment<EditableItem extends Editable> extends Setu
         okButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ItemSettings<EditableItem> itemSettings = getCurrentSettings();
+                ItemSettings itemSettings = getCurrentSettings();
                 EditableItem editableItem = editor.make(itemSettings);
                 dashboard.addItem(editableItem);
                 getActivity().onBackPressed();
@@ -50,16 +50,8 @@ public abstract class EditorFragment<EditableItem extends Editable> extends Setu
         });
     }
 
-    public void configureDashboard(Dashboard<EditableItem> dashboard) {
-        this.dashboard = dashboard;
-    }
-
-    public void configureEditor(Editor<EditableItem> editor) {
-        this.editor = editor;
-    }
-
     public abstract void updateView();
 
-    protected abstract ItemSettings<EditableItem> getCurrentSettings();
+    protected abstract ItemSettings getCurrentSettings();
 
 }
