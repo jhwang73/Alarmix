@@ -5,9 +5,13 @@ import android.view.View;
 import android.widget.TimePicker;
 
 import com.jhwang73.alarmix.R;
+import com.jhwang73.alarmix.dashboard.Dashboard;
+import com.jhwang73.alarmix.dashboard.alarm.AlarmDashboard;
 import com.jhwang73.alarmix.editables.ItemSettings;
 import com.jhwang73.alarmix.editables.alarm.Alarm;
 import com.jhwang73.alarmix.editables.alarm.AlarmSettings;
+import com.jhwang73.alarmix.editor.Editor;
+import com.jhwang73.alarmix.editor.alarm.AlarmEditor;
 import com.jhwang73.alarmix.fragment.editor.EditorFragment;
 
 public class AlarmEditorFragment extends EditorFragment<Alarm> {
@@ -32,6 +36,11 @@ public class AlarmEditorFragment extends EditorFragment<Alarm> {
     @Override
     protected void initializeAdditionalComponents(View view) {
         timePicker = view.findViewById(R.id.timePicker);
+    }
+
+    @Override
+    protected Editor<Alarm> initializeEditor() {
+        return new AlarmEditor();
     }
 
     @Override

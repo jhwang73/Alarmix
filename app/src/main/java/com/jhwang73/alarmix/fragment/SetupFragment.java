@@ -16,11 +16,14 @@ public abstract class SetupFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         int fragmentID = getFragmentID();
         View view = inflater.inflate(fragmentID, container, false);
+        initializeModel();
         initializeView(view);
         return view;
     }
 
     protected abstract int getFragmentID();
+
+    protected abstract void initializeModel();
 
     private void initializeView(View view) {
         initializeComponents(view);

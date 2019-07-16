@@ -6,11 +6,12 @@ import com.jhwang73.alarmix.editables.alarm.Alarm;
 import com.jhwang73.alarmix.editables.alarm.AlarmSettings;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class AlarmDashboard extends Dashboard<Alarm> {
 
-    public AlarmDashboard() {
-        super(new ArrayList<Alarm>());
+    public AlarmDashboard(List<Alarm> alarmList) {
+        super(alarmList);
     }
 
     @Override

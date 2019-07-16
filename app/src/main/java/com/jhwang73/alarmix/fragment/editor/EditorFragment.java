@@ -31,6 +31,17 @@ public abstract class EditorFragment<EditableItem extends Editable> extends Setu
     protected abstract void initializeAdditionalComponents(View view);
 
     @Override
+    protected void initializeModel() {
+        this.editor = initializeEditor();
+    }
+
+    public void registerDashboard(Dashboard<EditableItem> dashboard) {
+        this.dashboard = dashboard;
+    }
+
+    protected abstract Editor<EditableItem> initializeEditor();
+
+    @Override
     protected final void initializeListeners(View view) {
         okButton.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -26,18 +26,19 @@ public abstract class DashboardFragment<EditableItem extends Editable> extends S
     private ListView listView;
     private Button addItemButton;
 
-    public DashboardFragment(Dashboard<EditableItem> dashboard, EditorFragmentFactory<EditableItem> editorFragmentFactory) {
-
-        //dashboard
-        //editorfragmentfactory
-
-        this.dashboard = dashboard;
-        this.editorFragmentFactory = editorFragmentFactory;
-    }
-
     public Dashboard<EditableItem> getDashboard() {
         return dashboard;
     }
+
+    @Override
+    protected void initializeModel() {
+        this.dashboard = loadDashboard();
+        this.editorFragmentFactory = initializeEditorFragmentFactory();
+    }
+
+    protected abstract Dashboard<EditableItem> loadDashboard();
+    
+    protected abstract EditorFragmentFactory<EditableItem> initializeEditorFragmentFactory();
 
     @Override
     protected void initializeComponents(View view) {
@@ -64,10 +65,8 @@ public abstract class DashboardFragment<EditableItem extends Editable> extends S
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
                 EditableItem editableItem = listViewAdapter.getItem(position);
                 ItemSettings itemSettings = editableItem.getItemSettings();
-
                 openEditorFragment(itemSettings);
             }
         });
@@ -79,9 +78,7 @@ public abstract class DashboardFragment<EditableItem extends Editable> extends S
         addItemButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 ItemSettings defaultSettings = dashboard.getDefaultSettings();
-
                 openEditorFragment(defaultSettings);
             }
         });
