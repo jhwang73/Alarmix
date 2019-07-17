@@ -2,6 +2,8 @@ package com.jhwang73.alarmix.fragment.dashboard;
 
 import android.content.SharedPreferences;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.jhwang73.alarmix.R;
 import com.jhwang73.alarmix.dashboard.Dashboard;
 import com.jhwang73.alarmix.dashboard.alarm.AlarmDashboard;
@@ -9,6 +11,7 @@ import com.jhwang73.alarmix.editables.alarm.Alarm;
 import com.jhwang73.alarmix.fragment.editor.EditorFragmentFactory;
 import com.jhwang73.alarmix.fragment.editor.alarm.AlarmEditorFragmentFactory;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,20 +32,24 @@ public class AlarmsDashboardFragment extends DashboardFragment<Alarm> {
 
     private List<Alarm> loadOrInitializeAlarmList() {
         String ALARM_JSON_NOT_FOUND = "ALARM_JSON_NOT_FOUND";
-        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("Alarm", MODE_PRIVATE);
-        String alarmListJson = sharedPreferences.getString("AlarmList.json", ALARM_JSON_NOT_FOUND);
-        if (alarmListJson == ALARM_JSON_NOT_FOUND) {
+        // Need a check on this and/or create in Main
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("DEFAULT", MODE_PRIVATE);
+        String alarmListJson = sharedPreferences.getString("ALARM_ID", ALARM_JSON_NOT_FOUND);
+
+        System.out.println(alarmListJson);
+
+        Gson gson = new Gson();
+
+        if (alarmListJson.equals(ALARM_JSON_NOT_FOUND)) {
             List<Alarm> alarmList = new ArrayList<>();
-//            sharedPreferences.edit().putString();
+            String alarmListJSon = gson.toJson(alarmList);
+            return alarmList;
+
         } else {
-            Gson gson = Gson();
+            Type alarmListType = new TypeToken<List<Alarm>>(){}.getType();
+            List<Alarm> alarmList = gson.fromJson(alarmListJson, alarmListType);
+            return alarmList;
         }
-
-
-        // What this should do is
-        // if not in sharedPref, make a empty list in sharedPref
-        // return whats in shraedPref
-        return new ArrayList<>();
     }
 
     @Override

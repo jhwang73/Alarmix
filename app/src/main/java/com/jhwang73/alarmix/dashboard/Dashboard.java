@@ -19,15 +19,16 @@ public abstract class Dashboard<EditableItem extends Editable> {
     }
 
     public void addItem(EditableItem item) {
-        // TEST
-//        if item already in items, update. Otherwise, add as new
-        items.add(item);
+        this.items.add(item);
+        sortList();
     }
 
-    public void sortList() {
-        // TEST
+    private void sortList() {
+        // TODO
     }
 
     public abstract ItemSettings getDefaultSettings();
+
+    public abstract String getItemId();
 
 }

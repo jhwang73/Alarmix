@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 
 public class Alarm implements Editable {
 
+    public static final String ID = "ALARM_ID";
     private AlarmSettings alarmSettings;
 
     private boolean isOn;
