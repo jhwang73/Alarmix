@@ -58,7 +58,7 @@ public abstract class EditorFragment<EditableItem extends Editable> extends Setu
             @Override
             public void onClick(View v) {
 
-                ItemSettings itemSettings = getCurrentSettings();
+                ItemSettings<EditableItem> itemSettings = getCurrentSettings();
                 EditableItem editableItem = editor.make(itemSettings);
                 dashboard.addItem(editableItem);
                 List<EditableItem> itemsList = dashboard.getItems();
@@ -87,6 +87,6 @@ public abstract class EditorFragment<EditableItem extends Editable> extends Setu
 
     public abstract void loadSettings(ItemSettings itemSettings);
 
-    protected abstract ItemSettings getCurrentSettings();
+    protected abstract ItemSettings<EditableItem> getCurrentSettings();
 
 }
