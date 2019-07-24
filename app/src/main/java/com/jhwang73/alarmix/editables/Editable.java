@@ -1,6 +1,8 @@
 package com.jhwang73.alarmix.editables;
 
-public interface Editable {
+import java.io.Serializable;
+
+public interface Editable extends Serializable {
 
     public ItemSettings getItemSettings();
 

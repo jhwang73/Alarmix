@@ -11,6 +11,12 @@ import com.jhwang73.alarmix.editables.alarm.Alarm;
 import com.jhwang73.alarmix.fragment.editor.EditorFragmentFactory;
 import com.jhwang73.alarmix.fragment.editor.alarm.AlarmEditorFragmentFactory;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,31 +31,28 @@ public class AlarmsDashboardFragment extends DashboardFragment<Alarm> {
     }
 
     @Override
-    protected Dashboard<Alarm> loadDashboard() {
-        List<Alarm> alarmList = loadOrInitializeAlarmList();
-        return new AlarmDashboard(alarmList);
+    protected List<Alarm> loadOrInitializeItemsList() {
+
+        try {
+            FileInputStream fis = getContext().openFileInput("DEFAULT");
+            ObjectInputStream is = new ObjectInputStream(fis);
+            List<Alarm> alarms = (List<Alarm>) is.readObject();
+            is.close();
+            fis.close();
+            return alarms;
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        List<Alarm> alarmList = new ArrayList<>();
+        return alarmList;
     }
 
-    private List<Alarm> loadOrInitializeAlarmList() {
-        String ALARM_JSON_NOT_FOUND = "ALARM_JSON_NOT_FOUND";
-        // Need a check on this and/or create in Main
-        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("DEFAULT", MODE_PRIVATE);
-        String alarmListJson = sharedPreferences.getString("ALARM_ID", ALARM_JSON_NOT_FOUND);
-
-        System.out.println(alarmListJson);
-
-        Gson gson = new Gson();
-
-        if (alarmListJson.equals(ALARM_JSON_NOT_FOUND)) {
-            List<Alarm> alarmList = new ArrayList<>();
-            String alarmListJSon = gson.toJson(alarmList);
-            return alarmList;
-
-        } else {
-            Type alarmListType = new TypeToken<List<Alarm>>(){}.getType();
-            List<Alarm> alarmList = gson.fromJson(alarmListJson, alarmListType);
-            return alarmList;
-        }
+    @Override
+    protected Dashboard<Alarm> loadDashboard(List<Alarm> alarms) {
+        return new AlarmDashboard(alarms);
     }
 
     @Override

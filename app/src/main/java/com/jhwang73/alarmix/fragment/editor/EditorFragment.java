@@ -12,6 +12,9 @@ import com.jhwang73.alarmix.editables.alarm.Alarm;
 import com.jhwang73.alarmix.editor.Editor;
 import com.jhwang73.alarmix.fragment.SetupFragment;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -54,15 +57,21 @@ public abstract class EditorFragment<EditableItem extends Editable> extends Setu
         okButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 ItemSettings itemSettings = getCurrentSettings();
                 EditableItem editableItem = editor.make(itemSettings);
                 dashboard.addItem(editableItem);
                 List<EditableItem> itemsList = dashboard.getItems();
 
-                SharedPreferences sharedPreferences = getActivity().getSharedPreferences("DEFAULT", MODE_PRIVATE);
-                Gson gson = new Gson();
-                String itemListJson = gson.toJson(itemsList);
-                sharedPreferences.edit().putString(dashboard.getItemId(), itemListJson).commit();
+                try {
+                    FileOutputStream fos = getContext().openFileOutput("DEFAULT", getContext().MODE_PRIVATE);
+                    ObjectOutputStream os = new ObjectOutputStream(fos);
+                    os.writeObject(itemsList);
+                    os.close();
+                    fos.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
 
                 getActivity().onBackPressed();
             }
