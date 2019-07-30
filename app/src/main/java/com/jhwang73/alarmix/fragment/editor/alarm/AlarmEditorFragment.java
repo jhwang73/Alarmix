@@ -10,8 +10,6 @@ import com.jhwang73.alarmix.dashboard.alarm.AlarmDashboard;
 import com.jhwang73.alarmix.editables.ItemSettings;
 import com.jhwang73.alarmix.editables.alarm.Alarm;
 import com.jhwang73.alarmix.editables.alarm.AlarmSettings;
-import com.jhwang73.alarmix.editor.Editor;
-import com.jhwang73.alarmix.editor.alarm.AlarmEditor;
 import com.jhwang73.alarmix.fragment.editor.EditorFragment;
 
 public class AlarmEditorFragment extends EditorFragment<Alarm> {
@@ -36,24 +34,32 @@ public class AlarmEditorFragment extends EditorFragment<Alarm> {
     @Override
     protected void initializeAdditionalComponents(View view) {
         timePicker = view.findViewById(R.id.timePicker);
+        visualizeItem();
     }
 
     @Override
-    protected Editor<Alarm> initializeEditor() {
-        return new AlarmEditor();
+    protected void updateItemSettings() {
+        editableItem.setHour(safeGetHour());
+        editableItem.setMinute(safeGetMinute());
     }
 
-    @Override
-    public void loadSettings(ItemSettings itemSettings) {
-
+    private void visualizeItem() {
+        safeSetHour(editableItem.getHour());
+        safeSetMinute(editableItem.getMinute());
     }
 
-    @Override
-    protected ItemSettings getCurrentSettings() {
-        int hour = safeGetHour();
-        int minute = safeGetMinute();
+    private void safeSetHour(int hour) {
+        if (Build.VERSION.SDK_INT >= 23)
+            timePicker.setHour(hour);
+        else
+            timePicker.setCurrentHour(hour);
+    }
 
-        return new AlarmSettings(hour, minute);
+    private void safeSetMinute(int minute) {
+        if (Build.VERSION.SDK_INT >= 23)
+            timePicker.setMinute(minute);
+        else
+            timePicker.setCurrentMinute(minute);
     }
 
     private int safeGetHour() {

@@ -4,6 +4,4 @@ import java.io.Serializable;
 
 public interface Editable extends Serializable {
 
-    public ItemSettings getItemSettings();
-
 }

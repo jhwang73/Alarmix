@@ -67,8 +67,7 @@ public abstract class DashboardFragment<EditableItem extends Editable> extends S
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 EditableItem editableItem = listViewAdapter.getItem(position);
-                ItemSettings itemSettings = editableItem.getItemSettings();
-                openEditorFragment(itemSettings);
+                openEditorFragment(editableItem);
             }
         });
     }
@@ -79,16 +78,16 @@ public abstract class DashboardFragment<EditableItem extends Editable> extends S
         addItemButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ItemSettings defaultSettings = dashboard.getDefaultSettings();
-                openEditorFragment(defaultSettings);
+                EditableItem editableItem = dashboard.getDefaultItem();
+                openEditorFragment(editableItem);
             }
         });
     }
 
-    private void openEditorFragment(ItemSettings itemSettings) {
+    private void openEditorFragment(EditableItem item) {
 
         EditorFragment<EditableItem> editorFragment = editorFragmentFactory.make(dashboard);
-        editorFragment.loadSettings(itemSettings);
+        editorFragment.loadItem(item);
 
         getActivity().getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment_container, editorFragment, "openNewEditorFragment")

@@ -18,8 +18,10 @@ public abstract class Dashboard<EditableItem extends Editable> {
         return items;
     }
 
-    public void addItem(EditableItem item) {
-        this.items.add(item);
+    public void addItemIfNotPresent(EditableItem item) {
+        if (!items.contains(item)) {
+            this.items.add(item);
+        }
         sortList();
     }
 
@@ -27,7 +29,7 @@ public abstract class Dashboard<EditableItem extends Editable> {
         // TODO
     }
 
-    public abstract ItemSettings getDefaultSettings();
+    public abstract EditableItem getDefaultItem();
 
     public abstract String getItemId();
 

@@ -6,8 +6,6 @@ import androidx.annotation.NonNull;
 
 public class AlarmSettings extends ItemSettings<Alarm> {
 
-    public static AlarmSettings DEFAULT_SETTINGS = new AlarmSettings(7, 0);
-
     private int hour;
     private int minute;
 
@@ -38,8 +36,4 @@ public class AlarmSettings extends ItemSettings<Alarm> {
         return this.hour + ":" + this.minute;
     }
 
-    @Override
-    public Alarm makeItem() {
-        return new Alarm(getHour(), getMinute());
-    }
 }

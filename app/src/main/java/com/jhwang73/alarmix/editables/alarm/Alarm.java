@@ -7,15 +7,23 @@ import androidx.annotation.NonNull;
 
 public class Alarm implements Editable {
 
+    private static final int DEFAULT_HOUR = 7;
+    private static final int DEFAULT_MINUTE = 0;
+
     public static final String ID = "ALARM_ID";
+
     private AlarmSettings alarmSettings;
 
     private boolean isOn;
 
-    public Alarm(int hour, int minute) {
+    public Alarm() {
         isOn = true;
-        alarmSettings = new AlarmSettings(hour, minute);
+        alarmSettings = new AlarmSettings(DEFAULT_HOUR, DEFAULT_MINUTE);
     }
+
+    public int getHour() { return alarmSettings.getHour(); }
+
+    public int getMinute() { return alarmSettings.getMinute(); }
 
     public void setHour(int hour) {
         alarmSettings.setHour(hour);
@@ -31,8 +39,4 @@ public class Alarm implements Editable {
         return alarmSettings.toString() + " - " + Boolean.toString(isOn);
     }
 
-    @Override
-    public ItemSettings getItemSettings() {
-        return alarmSettings;
-    }
 }

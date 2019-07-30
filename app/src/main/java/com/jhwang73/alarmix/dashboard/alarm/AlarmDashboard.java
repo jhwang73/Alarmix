@@ -15,8 +15,8 @@ public class AlarmDashboard extends Dashboard<Alarm> {
     }
 
     @Override
-    public ItemSettings getDefaultSettings() {
-        return AlarmSettings.DEFAULT_SETTINGS;
+    public Alarm getDefaultItem() {
+        return new Alarm();
     }
 
     @Override
