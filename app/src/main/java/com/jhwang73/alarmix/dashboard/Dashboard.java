@@ -1,9 +1,7 @@
 package com.jhwang73.alarmix.dashboard;
 
 import com.jhwang73.alarmix.editables.Editable;
-import com.jhwang73.alarmix.editables.ItemSettings;
 
-import java.util.Comparator;
 import java.util.List;
 
 public abstract class Dashboard<EditableItem extends Editable> {

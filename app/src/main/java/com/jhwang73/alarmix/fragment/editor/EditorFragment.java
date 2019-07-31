@@ -1,23 +1,16 @@
 package com.jhwang73.alarmix.fragment.editor;
 
-import android.content.SharedPreferences;
 import android.view.View;
 import android.widget.Button;
 
-import com.google.gson.Gson;
 import com.jhwang73.alarmix.dashboard.Dashboard;
 import com.jhwang73.alarmix.editables.Editable;
-import com.jhwang73.alarmix.editables.ItemSettings;
-import com.jhwang73.alarmix.editables.alarm.Alarm;
 import com.jhwang73.alarmix.fragment.SetupFragment;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
-import java.util.ArrayList;
 import java.util.List;
-
-import static android.content.Context.MODE_PRIVATE;
 
 public abstract class EditorFragment<EditableItem extends Editable> extends SetupFragment {
 

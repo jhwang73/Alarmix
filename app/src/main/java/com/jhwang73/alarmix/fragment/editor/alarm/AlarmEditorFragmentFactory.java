@@ -1,9 +1,8 @@
 package com.jhwang73.alarmix.fragment.editor.alarm;
 
-import com.jhwang73.alarmix.editables.ItemSettings;
 import com.jhwang73.alarmix.editables.alarm.Alarm;
-import com.jhwang73.alarmix.fragment.editor.EditorFragmentFactory;
 import com.jhwang73.alarmix.fragment.editor.EditorFragment;
+import com.jhwang73.alarmix.fragment.editor.EditorFragmentFactory;
 
 public class AlarmEditorFragmentFactory extends EditorFragmentFactory<Alarm> {
 

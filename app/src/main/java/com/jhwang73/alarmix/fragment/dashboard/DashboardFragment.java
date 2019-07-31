@@ -9,10 +9,9 @@ import android.widget.ListView;
 import com.jhwang73.alarmix.R;
 import com.jhwang73.alarmix.dashboard.Dashboard;
 import com.jhwang73.alarmix.editables.Editable;
-import com.jhwang73.alarmix.editables.ItemSettings;
-import com.jhwang73.alarmix.fragment.editor.EditorFragmentFactory;
 import com.jhwang73.alarmix.fragment.SetupFragment;
 import com.jhwang73.alarmix.fragment.editor.EditorFragment;
+import com.jhwang73.alarmix.fragment.editor.EditorFragmentFactory;
 
 import java.util.List;
 

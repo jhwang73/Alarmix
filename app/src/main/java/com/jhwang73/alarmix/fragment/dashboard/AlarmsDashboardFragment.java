@@ -1,9 +1,5 @@
 package com.jhwang73.alarmix.fragment.dashboard;
 
-import android.content.SharedPreferences;
-
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import com.jhwang73.alarmix.R;
 import com.jhwang73.alarmix.dashboard.Dashboard;
 import com.jhwang73.alarmix.dashboard.alarm.AlarmDashboard;
@@ -12,16 +8,10 @@ import com.jhwang73.alarmix.fragment.editor.EditorFragmentFactory;
 import com.jhwang73.alarmix.fragment.editor.alarm.AlarmEditorFragmentFactory;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
-
-import static android.content.Context.MODE_PRIVATE;
 
 public class AlarmsDashboardFragment extends DashboardFragment<Alarm> {
 
